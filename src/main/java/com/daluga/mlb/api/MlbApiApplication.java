@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 public class MlbApiApplication implements CommandLineRunner {
 
@@ -27,7 +29,9 @@ public class MlbApiApplication implements CommandLineRunner {
 
         LOGGER.debug("Number of processors: " + Runtime.getRuntime().availableProcessors());
 
-        findPlayerService.findPlayerById(446372L);
+        //findPlayerService.findPlayerById(446372L);
+
+        findPlayerService.findPlayersById(Arrays.asList(400284L,405395L,407812L,407822L));
 
         LOGGER.debug("The MlbApiApplication has ended!");
     }

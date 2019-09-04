@@ -1,6 +1,8 @@
 package com.daluga.mlb.api.service;
 
+import com.daluga.mlb.api.constants.Group;
 import com.daluga.mlb.api.constants.MLBAPIEndPoints;
+import com.daluga.mlb.api.constants.Year;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,5 +43,15 @@ public class PlayerService {
         LOGGER.debug("The response: " + response);
 
         LOGGER.debug("The findPlayersById has ended!");
+    }
+
+    public void findPlayerStatsById(Long id, Year year, Group group) {
+        LOGGER.debug("The findPlayerById has started!");
+
+        ResponseEntity<String> response = restTemplate.getForEntity(MLBAPIEndPoints.PEOPLE.endPoint() + "/" + id + "/stats?stats=byDateRange&season=" + year.id() + "&group=" + group.id() + "&startDate=&endDate=&leagueListId=mlb_milb", String.class);
+
+        LOGGER.debug("The response: " + response);
+
+        LOGGER.debug("The findPlayerById has ended!");
     }
 }

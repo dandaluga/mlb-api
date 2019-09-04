@@ -1,6 +1,8 @@
 package com.daluga.mlb.api;
 
+import com.daluga.mlb.api.constants.Group;
 import com.daluga.mlb.api.constants.Venues;
+import com.daluga.mlb.api.constants.Year;
 import com.daluga.mlb.api.service.*;
 import com.daluga.mlb.api.constants.Teams;
 import org.slf4j.Logger;
@@ -45,8 +47,9 @@ public class MlbApiApplication implements CommandLineRunner {
 
         LOGGER.debug("Number of processors: " + Runtime.getRuntime().availableProcessors());
 
-        playerService.findPlayerById(446372L);
+        //playerService.findPlayerById(446372L);
         //playerService.findPlayersById(Arrays.asList(400284L,405395L,407812L,407822L));
+        playerService.findPlayerStatsById(446372L, Year.YEAR_2019, Group.PITCHING);
 
         //teamService.findAllTeams();
         //teamService.findTeamById(Teams.CHICAGO_CUBS.id());
@@ -63,6 +66,7 @@ public class MlbApiApplication implements CommandLineRunner {
 
         // TODO: Call the schedule endpoint to get all the games for that day. This will return the PK of the game.
         //       Then call the boxscore service with each of the PK ids returned to get all the boxscores for the day.
+        //       See this for some of the endpoints: https://github.com/bradleyhurley/PyBall/wiki/Implemented-Endpoints
 
         LOGGER.debug("The MlbApiApplication has ended!");
     }

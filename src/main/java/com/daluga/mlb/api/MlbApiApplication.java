@@ -1,15 +1,16 @@
 package com.daluga.mlb.api;
 
-import com.daluga.mlb.api.service.FindPlayerService;
+import com.daluga.mlb.api.constants.Venues;
+import com.daluga.mlb.api.service.PlayerService;
+import com.daluga.mlb.api.service.TeamService;
+import com.daluga.mlb.api.constants.Teams;
+import com.daluga.mlb.api.service.VenueService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-
-import java.util.Arrays;
 
 @SpringBootApplication
 public class MlbApiApplication implements CommandLineRunner {
@@ -21,7 +22,13 @@ public class MlbApiApplication implements CommandLineRunner {
     }
 
     @Autowired
-    private FindPlayerService findPlayerService;
+    private PlayerService playerService;
+
+    @Autowired
+    private TeamService teamService;
+
+    @Autowired
+    private VenueService venueService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -29,9 +36,14 @@ public class MlbApiApplication implements CommandLineRunner {
 
         LOGGER.debug("Number of processors: " + Runtime.getRuntime().availableProcessors());
 
-        //findPlayerService.findPlayerById(446372L);
+        //playerService.findPlayerById(446372L);
+        //playerService.findPlayersById(Arrays.asList(400284L,405395L,407812L,407822L));
 
-        findPlayerService.findPlayersById(Arrays.asList(400284L,405395L,407812L,407822L));
+        //teamService.findAllTeams();
+        //teamService.findTeamById(Teams.CHICAGO_CUBS.id());
+
+        //venueService.findAllVenues();
+        venueService.findVenueById(Venues.WRIGLEY_FIELD.id());
 
         LOGGER.debug("The MlbApiApplication has ended!");
     }

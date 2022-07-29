@@ -1,18 +1,14 @@
 package com.daluga.mlb.api;
 
 import com.daluga.mlb.api.constants.Group;
-import com.daluga.mlb.api.constants.Venues;
 import com.daluga.mlb.api.constants.Year;
 import com.daluga.mlb.api.service.*;
-import com.daluga.mlb.api.constants.Teams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.Date;
 
 @SpringBootApplication
 public class MlbApiApplication implements CommandLineRunner {
@@ -25,21 +21,6 @@ public class MlbApiApplication implements CommandLineRunner {
 
     @Autowired
     private PlayerService playerService;
-
-    @Autowired
-    private TeamService teamService;
-
-    @Autowired
-    private VenueService venueService;
-
-    @Autowired
-    private RosterService rosterService;
-
-    @Autowired
-    private ScheduleService scheduleService;
-
-    @Autowired
-    private BoxscoreService boxscoreService;
 
     @Override
     public void run(String... args) throws Exception {
